@@ -2,6 +2,7 @@ package poc.junit.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -71,6 +72,11 @@ public class CalculatorTest {
 		if(!"DEV".equals(profile)) {
 			throw new TestAbortedException("Tes dibatalkan karena bukan DEV");
 		}
+	}
+	
+	@Test
+	public void testAssumption() {
+		assumeTrue("DEV".equals(System.getenv("PROFILE")));
 	}
 	
 }
